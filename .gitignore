@@ -6,3 +6,10 @@ node_modules
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+# Rust build
+/rust-lambdas/**/target
+/.build
+
+#Orm
+/drizzle
