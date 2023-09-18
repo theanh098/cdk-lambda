@@ -18,6 +18,7 @@ import { user } from '../models/user.model';
 import * as B from 'fp-ts/boolean';
 import { rateToBusiness } from '../models/rate-to-business.model';
 import { review } from '../models/review.model';
+import { fold } from '../../utils/fold';
 
 export class PaginatedQuery {
   page: number;
@@ -110,24 +111,20 @@ export class BusinessRepository {
           O.fromNullable,
           O.match(
             () => query,
-            value => {
-              switch (value) {
-                case 'bestRating':
-                  return query.orderBy(
+            sort =>
+              fold(sort, {
+                bestRating: () =>
+                  query.orderBy(
                     sql`avg(${rateToBusiness.rating}) desc nulls last`
-                  );
-                case 'lastest':
-                  return query.orderBy(desc(business.createdAt));
-                case 'mostReview':
-                  return query.orderBy(
-                    sql`(select count(*) from ${review} 
-                    where ${review.status} = ${'approved'} 
-                    and ${review.businessId} = ${business.id}) desc`
-                  );
-                default:
-                  return query;
-              }
-            }
+                  ),
+                lastest: () => query.orderBy(desc(business.createdAt)),
+                mostReview: () =>
+                  query.orderBy(
+                    sql`(select count(*) from ${review}
+                          where ${review.status} = ${'approved'}
+                          and ${review.businessId} = ${business.id}) desc`
+                  )
+              })
           )
         )
       ),

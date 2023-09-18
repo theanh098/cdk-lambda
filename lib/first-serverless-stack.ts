@@ -4,6 +4,7 @@ import { RustFunction, Settings } from 'rust.aws-cdk-lambda';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import { NodejsFunction, BundlingOptions } from 'aws-cdk-lib/aws-lambda-nodejs';
 
 export class FirstServerlessStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -30,9 +31,9 @@ export class FirstServerlessStack extends cdk.Stack {
       target: 'x86_64-unknown-linux-gnu'
     });
 
-    const handler = new lambda.Function(this, 'ThoAnh', {
+    new NodejsFunction(this, 'ThoAnh<3', {
       runtime: lambda.Runtime.NODEJS_18_X,
-      code: lambda.Code.fromAsset('dist/lambdas/thoanh'),
+      entry: 'dist/lambdas/thoanh/index.js',
       handler: 'index.handler'
     });
 
