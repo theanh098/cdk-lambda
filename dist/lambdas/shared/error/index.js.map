@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../lambdas/shared/error/index.ts"],"names":[],"mappings":";;;AAAA,kCAAkC;AAElC,MAAM,sBAAsB,GAAG,MAAM,CAAC,wBAAwB,CAAC,CAAC;AAOzD,MAAM,mBAAmB,GAAG,CAAC,MAAe,EAAuB,EAAE,CAAC,CAAC;IAC5E,IAAI,EAAE,sBAAsB;IAC5B,MAAM,EAAE,CAAC,CAAC,OAAO,CAAC,MAAM,CAAC,CAAC,OAAO;CAClC,CAAC,CAAC;AAHU,QAAA,mBAAmB,uBAG7B"}

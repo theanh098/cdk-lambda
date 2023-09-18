@@ -11,5 +11,8 @@ cdk.out
 /rust-lambdas/**/target
 /.build
 
-#Orm
+# Orm
 /drizzle
+
+# Bundle
+/dist

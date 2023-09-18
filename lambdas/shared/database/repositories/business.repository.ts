@@ -18,7 +18,6 @@ import { user } from '../models/user.model';
 import * as B from 'fp-ts/boolean';
 import { rateToBusiness } from '../models/rate-to-business.model';
 import { review } from '../models/review.model';
-import { cons } from 'fp-ts/lib/ReadonlyNonEmptyArray';
 
 export class PaginatedQuery {
   page: number;
